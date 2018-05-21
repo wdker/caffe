@@ -34,8 +34,8 @@ if DEFINED APPVEYOR (
     :: Check that we have the right python version
     !PYTHON_EXE! --version
     :: Add the required channels
-    ::conda config --add channels conda-forge
-    ::conda config --add channels willyd
+    conda config --add channels conda-forge
+    conda config --add channels willyd
     :: Update conda
     conda update conda -y
     :: Download other required packages
