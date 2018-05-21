@@ -5,20 +5,20 @@
 if DEFINED APPVEYOR (
     echo Setting Appveyor defaults
     if NOT DEFINED MSVC_VERSION set MSVC_VERSION=14
-    if NOT DEFINED WITH_NINJA set WITH_NINJA=1
+    if NOT DEFINED WITH_NINJA set WITH_NINJA=0
     if NOT DEFINED CPU_ONLY set CPU_ONLY=1
     if NOT DEFINED CUDA_ARCH_NAME set CUDA_ARCH_NAME=Auto
     if NOT DEFINED CMAKE_CONFIG set CMAKE_CONFIG=Release
     if NOT DEFINED USE_NCCL set USE_NCCL=0
     if NOT DEFINED CMAKE_BUILD_SHARED_LIBS set CMAKE_BUILD_SHARED_LIBS=0
-    if NOT DEFINED PYTHON_VERSION set PYTHON_VERSION=2
-    if NOT DEFINED BUILD_PYTHON set BUILD_PYTHON=1
+    if NOT DEFINED PYTHON_VERSION set PYTHON_VERSION=3
+    if NOT DEFINED BUILD_PYTHON set BUILD_PYTHON=0
     if NOT DEFINED BUILD_PYTHON_LAYER set BUILD_PYTHON_LAYER=1
     if NOT DEFINED BUILD_MATLAB set BUILD_MATLAB=0
-    if NOT DEFINED PYTHON_EXE set PYTHON_EXE=python
+    if NOT DEFINED PYTHON_EXE set PYTHON_EXE=C:\Users\admin\Anaconda3\envs\caffenv\python.exe
     if NOT DEFINED RUN_TESTS set RUN_TESTS=1
-    if NOT DEFINED RUN_LINT set RUN_LINT=1
-    if NOT DEFINED RUN_INSTALL set RUN_INSTALL=1
+    if NOT DEFINED RUN_LINT set RUN_LINT=0
+    if NOT DEFINED RUN_INSTALL set RUN_INSTALL=0
 
     :: Set python 2.7 with conda as the default python
     if !PYTHON_VERSION! EQU 2 (
@@ -26,15 +26,16 @@ if DEFINED APPVEYOR (
     )
     :: Set python 3.5 with conda as the default python
     if !PYTHON_VERSION! EQU 3 (
-        set CONDA_ROOT=C:\Miniconda35-x64
+        ::set CONDA_ROOT=C:\Miniconda35-x64
+        set CONDA_ROOT=C:\Users\admin\Anaconda3\envs\caffenv
     )
     set PATH=!CONDA_ROOT!;!CONDA_ROOT!\Scripts;!CONDA_ROOT!\Library\bin;!PATH!
 
     :: Check that we have the right python version
     !PYTHON_EXE! --version
     :: Add the required channels
-    conda config --add channels conda-forge
-    conda config --add channels willyd
+    ::conda config --add channels conda-forge
+    ::conda config --add channels willyd
     :: Update conda
     conda update conda -y
     :: Download other required packages
