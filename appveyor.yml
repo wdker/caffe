@@ -33,6 +33,8 @@ environment:
           PYTHON_VERSION: 3
           WITH_CUDA: 1
 
+
+
 build_script:
 - cmd: >-
     call scripts\build_win.cmd
@@ -40,6 +42,3 @@ build_script:
 artifacts:
   - path: build\install
     name: caffe
-
-cache:
-  - packages -> **\packages.config
