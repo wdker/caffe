@@ -689,7 +689,7 @@ void DataTransformer<Dtype>::Transform(const cv::Mat& cv_img,
   //cv::Mat cv_cropped_img = cv_img;
 
   // use crop_w, crop_h instead of crop_size
-  if (crop_h > 0) && (crop_w > 0)) {
+  if ((crop_h > 0) && (crop_w > 0)) {
     CHECK_EQ(crop_h, height);
     CHECK_EQ(crop_w, width);
     // We only do random crop when we do training.
