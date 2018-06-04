@@ -36,8 +36,7 @@ template <typename Dtype>
 BasePrefetchingDataLayer<Dtype>::BasePrefetchingDataLayer(
     const LayerParameter& param)
     : BaseDataLayer<Dtype>(param),
-      prefetch_(param.data_param().prefetch()),
-      prefetch_free_(), prefetch_full_(), prefetch_current_() {
+      prefetch_free_(), prefetch_full_() {
   for (int i = 0; i < PREFETCH_COUNT; ++i) {
     prefetch_[i].reset(new Batch<Dtype>());
     prefetch_free_.push(&prefetch_[i]);
