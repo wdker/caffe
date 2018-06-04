@@ -612,8 +612,7 @@ void DataTransformer<Dtype>::Transform(const cv::Mat& cv_img,
                                        bool* do_mirror) {
   const int crop_size = param_.crop_size();
   const int img_channels = cv_img.channels();
-  const int img_height = cv_img.rows;
-  const int img_width = cv_img.cols;
+
 
   // Check dimensions.
   const int channels = transformed_blob->channels();
@@ -701,7 +700,7 @@ void DataTransformer<Dtype>::Transform(const cv::Mat& cv_img,
       w_off = (img_width - crop_w) / 2;
     }
     cv::Rect roi(w_off, h_off, crop_w, crop_h);
-    cv_cropped_img = cv_noised_image(roi);
+    cv_cropped_image = cv_noised_image(roi);
   } else {
     CHECK_EQ(img_height, height);
     CHECK_EQ(img_width, width);
