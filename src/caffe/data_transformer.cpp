@@ -613,7 +613,6 @@ void DataTransformer<Dtype>::Transform(const cv::Mat& cv_img,
   const int crop_size = param_.crop_size();
   const int img_channels = cv_img.channels();
 
-
   // Check dimensions.
   const int channels = transformed_blob->channels();
   const int height = transformed_blob->height();
@@ -622,12 +621,8 @@ void DataTransformer<Dtype>::Transform(const cv::Mat& cv_img,
 
 
   CHECK_GT(img_channels, 0);
-
   CHECK_EQ(channels, img_channels);
-  CHECK_LE(height, img_height);
-  CHECK_LE(width, img_width);
   CHECK_GE(num, 1);
-
   CHECK(cv_img.depth() == CV_8U) << "Image data type must be unsigned byte";
 
   const Dtype scale = param_.scale();
@@ -635,9 +630,6 @@ void DataTransformer<Dtype>::Transform(const cv::Mat& cv_img,
   const bool has_mean_file = param_.has_mean_file();
   const bool has_mean_values = mean_values_.size() > 0;
 
-  CHECK_GT(img_channels, 0);
-  CHECK_GE(img_height, crop_size);
-  CHECK_GE(img_width, crop_size);
 
   Dtype* mean = NULL;
   if (has_mean_file) {
