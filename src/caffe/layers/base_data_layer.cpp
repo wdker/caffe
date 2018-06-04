@@ -38,7 +38,7 @@ BasePrefetchingDataLayer<Dtype>::BasePrefetchingDataLayer(
     : BaseDataLayer<Dtype>(param),
       prefetch_free_(), prefetch_full_() {
   for (int i = 0; i < PREFETCH_COUNT; ++i) {
-    prefetch_[i].reset(new Batch<Dtype>());
+    //prefetch_[i].reset(new Batch<Dtype>());
     prefetch_free_.push(&prefetch_[i]);
   }
 }
