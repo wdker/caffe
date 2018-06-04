@@ -634,8 +634,7 @@ void DataTransformer<Dtype>::Transform(const cv::Mat& cv_img,
   Dtype* mean = NULL;
   if (has_mean_file) {
     CHECK_EQ(img_channels, data_mean_.channels());
-    CHECK_EQ(img_height, data_mean_.height());
-    CHECK_EQ(img_width, data_mean_.width());
+
     mean = data_mean_.mutable_cpu_data();
   }
   if (has_mean_values) {
