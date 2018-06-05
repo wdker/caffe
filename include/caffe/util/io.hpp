@@ -150,12 +150,6 @@ inline bool ReadFileToDatum(const string& filename, Datum* datum) {
   return ReadFileToDatum(filename, -1, datum);
 }
 
-bool ReadImageToDatum(const string& filename, const int label,
-    const int height, const int width, const bool is_color,
-    const std::string & encoding, Datum* datum) {
-  return ReadImageToDatum(filename, label, height, width, 0, 0, is_color,
-                          encoding, datum);
-}
 
 bool ReadImageToDatum(const string& filename, const int label,
                       const int height, const int width, const int min_dim, const int max_dim,
@@ -175,6 +169,13 @@ inline bool ReadImageToDatum(const string& filename, const int label,
                           true, datum);
 }
 
+bool ReadImageToDatum(const string& filename, const int label,
+                      const int height, const int width, const bool is_color,
+                      const std::string & encoding, Datum* datum) {
+  return ReadImageToDatum(filename, label, height, width, 0, 0, is_color,
+                          encoding, datum);
+}
+    
 inline bool ReadImageToDatum(const string& filename, const int label,
     const int height, const int width, const bool is_color, Datum* datum) {
   return ReadImageToDatum(filename, label, height, width, is_color,
