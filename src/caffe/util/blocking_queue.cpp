@@ -94,7 +94,7 @@ template class BlockingQueue<AnnotatedDatum*>;
 template class BlockingQueue<shared_ptr<DataReader<Datum>::QueuePair> >;
 template class BlockingQueue<
         shared_ptr<DataReader<AnnotatedDatum>::QueuePair> >;
-template class BlockingQueue<P2PSync<float>*>;
-template class BlockingQueue<P2PSync<double>*>;
+//template class BlockingQueue<P2PSync<float>*>;
+//template class BlockingQueue<P2PSync<double>*>;
 
 }  // namespace caffe
