@@ -169,13 +169,13 @@ inline bool ReadImageToDatum(const string& filename, const int label,
                           true, datum);
 }
 
-bool ReadImageToDatum(const string& filename, const int label,
+inline bool ReadImageToDatum(const string& filename, const int label,
                       const int height, const int width, const bool is_color,
                       const std::string & encoding, Datum* datum) {
   return ReadImageToDatum(filename, label, height, width, 0, 0, is_color,
                           encoding, datum);
 }
-    
+
 inline bool ReadImageToDatum(const string& filename, const int label,
     const int height, const int width, const bool is_color, Datum* datum) {
   return ReadImageToDatum(filename, label, height, width, is_color,
