@@ -3,7 +3,7 @@ clone_folder: c:\projects\caffe
 environment:
   matrix:
     - MSVC_VERSION: 14
-      WITH_NINJA: 0
+      WITH_NINJA: 1
       CMAKE_CONFIG: Release
       CMAKE_BUILD_SHARED_LIBS: 0
       PYTHON_VERSION: 3
