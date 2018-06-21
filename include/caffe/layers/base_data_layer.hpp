@@ -41,12 +41,14 @@ class BaseDataLayer : public Layer<Dtype> {
   TransformationParameter transform_param_;
   shared_ptr<DataTransformer<Dtype> > data_transformer_;
   bool output_labels_;
+  bool box_label_;
 };
 
 template <typename Dtype>
 class Batch {
  public:
   Blob<Dtype> data_, label_;
+  vector<shared_ptr<Blob<Dtype> > > multi_label_;
 };
 
 template <typename Dtype>
@@ -65,14 +67,18 @@ class BasePrefetchingDataLayer :
   virtual void Forward_gpu(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top);
 
+  // Prefetches batches (asynchronously if to GPU memory)
+  static const int PREFETCH_COUNT = 3;
+
  protected:
   virtual void InternalThreadEntry();
   virtual void load_batch(Batch<Dtype>* batch) = 0;
 
-  vector<shared_ptr<Batch<Dtype> > > prefetch_;
+  //vector<shared_ptr<Batch<Dtype> > > prefetch_;
+  Batch<Dtype> prefetch_[PREFETCH_COUNT];
   BlockingQueue<Batch<Dtype>*> prefetch_free_;
   BlockingQueue<Batch<Dtype>*> prefetch_full_;
-  Batch<Dtype>* prefetch_current_;
+  //Batch<Dtype>* prefetch_current_;
 
   Blob<Dtype> transformed_data_;
 };
