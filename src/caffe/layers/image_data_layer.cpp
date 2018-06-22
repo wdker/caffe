@@ -83,7 +83,7 @@ void ImageDataLayer<Dtype>::DataLayerSetUp(const vector<Blob<Dtype>*>& bottom,
   CHECK_GT(batch_size, 0) << "Positive batch size required";
   top_shape[0] = batch_size;
   for (int i = 0; i < this->prefetch_.size(); ++i) {
-    this->prefetch_[i]->data_.Reshape(top_shape);
+    this->prefetch_[i].data_.Reshape(top_shape);
   }
   top[0]->Reshape(top_shape);
 
@@ -94,7 +94,7 @@ void ImageDataLayer<Dtype>::DataLayerSetUp(const vector<Blob<Dtype>*>& bottom,
   vector<int> label_shape(1, batch_size);
   top[1]->Reshape(label_shape);
   for (int i = 0; i < this->prefetch_.size(); ++i) {
-    this->prefetch_[i]->label_.Reshape(label_shape);
+    this->prefetch_[i].label_.Reshape(label_shape);
   }
 }
 
